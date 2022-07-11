@@ -6,6 +6,9 @@ function App() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }
   let savedArray = JSON.parse(localStorage.getItem("todos"));
+  if (savedArray===null){
+    savedArray=[];
+  }
   let [todos, setTodos] = useState([]);
   function Todoform() {
     return (
@@ -39,7 +42,7 @@ function App() {
     function Li(props) {
       let [form, setForm] = useState(false);
       function Editform(props) {
-        return (
+                return (
             <form style={{display:"inline"}}
             onSubmit={(e) => {
               e.preventDefault();
